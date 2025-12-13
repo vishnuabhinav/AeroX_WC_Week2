@@ -1,0 +1,13 @@
+aruco markers detection 
+counting the no.of boxes to identify the dictionary
+detection on gray img  and drawing border on original image
+
+yellow flower detection
+determine the coordinates of any one flower by cropping the image
+find the hsv values by hsv[y,x] 
+use approx upper and lower values for the mask (trail and error)
+marking the contours of large area
+
+arena detection 
+same as the flowers find the hsv values of the ground 
+and contour the large area part
