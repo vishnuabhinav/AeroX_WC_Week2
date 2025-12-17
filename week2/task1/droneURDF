@@ -1,0 +1,312 @@
+<robot name="drone">
+                                            <!-- base link -->
+    <link name="base">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.78525"/>
+            <geometry>
+                <box size="0.4 0.4 0.2"/>
+            </geometry>
+            <material name="Body_Material">
+                <color rgba="1.0 0.0 0.0 0.1"/>
+            </material>
+        </visual>
+    </link>
+    <material name="Wing_Material">
+        <color rgba="3.0 3.0 1.0 0.0"/>
+    </material>
+                                              <!-- first wing-->
+    <link name="wing_1">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+            <box size="0.6 0.1 0.1"/>
+            </geometry>
+            <material name="Wing_Material"/>
+        </visual>
+    </link>
+    <joint name="base_to_wing1" type="fixed">
+        <origin xyz="0.2 -0.2 0.0" rpy="0.0 0.0 -0.78525"/>
+        <parent link="base"/>
+        <child link="wing_1"/>
+    </joint>
+                                                <!-- 2nd wing -->
+     <link name="wing_2">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+            <box size="0.6 0.1 0.1"/>
+            </geometry>
+            <material name="Wing_Material"/>
+        </visual>
+    </link>
+    <joint name="base_to_wing2" type="fixed">
+        <origin xyz="0.2 0.2 0.0" rpy="0.0 0.0 0.78525"/>
+        <parent link="base"/>
+        <child link="wing_2"/>
+    </joint>
+                                                <!-- 3rd wing -->
+    <link name="wing_3">
+        <visual>
+            <geometry>
+            <box size="0.6 0.1 0.1"/>
+            </geometry>
+            <material name="Wing_Material"/>
+        </visual>
+    </link>
+    <joint name="base_to_wing3" type="fixed">
+        <origin xyz="-0.2 -0.2 0.0" rpy="0.0 0.0 0.78525"/>
+        <parent link="base"/>
+        <child link="wing_3"/>
+    </joint>
+                                                   <!-- 4th wing -->
+    <link name="wing_4">
+        <visual>
+            <geometry>
+            <box size="0.6 0.1 0.1"/>
+            </geometry>
+            <material name="Wing_Material"/>
+        </visual>
+    </link>
+    <joint name="base_to_wing4" type="fixed">
+        <origin xyz="-0.2 0.2 0.0" rpy="0.0 0.0 -0.78525"/>
+        <parent link="base"/>
+        <child link="wing_4"/>
+    </joint>
+                                                <!-- propellers 1 -->
+     <material name="propeller_material">
+                <color rgba="0.0 0.0 0.0 0.1"/>
+            </material>
+
+
+    <link name="propeller_1">
+        <visual>
+            <geometry>
+            <cylinder radius="0.05" length="0.4"/>
+            </geometry>
+            <material name="propeller_material"/>
+        </visual>
+    </link>
+    <joint name="wing1_to_propeller1" type="fixed">
+        <origin xyz="0.22 0.0 0.1" rpy="0.0 0.0 0.0"/>
+        <parent link="wing_1"/>
+        <child link="propeller_1"/>
+    </joint> 
+                                            <!-- propellers 2 -->
+    <link name="propeller_2">
+        <visual>
+            <geometry>
+            <cylinder radius="0.05" length="0.4"/>
+            </geometry>
+            <material name="propeller_material"/>
+        </visual>
+    </link>
+    <joint name="wing2_to_propeller2" type="fixed">
+        <origin xyz="0.22 0.0 0.1" rpy="0.0 0.0 0.0"/>
+        <parent link="wing_2"/>
+        <child link="propeller_2"/>
+    </joint> 
+                                              <!-- propellers 3 -->
+    <link name="propeller_3">
+        <visual>
+            <geometry>
+            <cylinder radius="0.05" length="0.4"/>
+            </geometry>
+            <material name="propeller_material"/>
+        </visual>
+    </link>
+    <joint name="wing2_to_propeller3" type="fixed">
+        <origin xyz="-0.22 0.0 0.1" rpy="0.0 0.0 0.0"/>
+        <parent link="wing_3"/>
+        <child link="propeller_3"/>
+    </joint> 
+                                              <!-- propellers 4 -->
+    <link name="propeller_4">
+        <visual>
+            <geometry>
+            <cylinder radius="0.05" length="0.4"/>
+            </geometry>
+            <material name="propeller_material"/>
+        </visual>
+    </link>
+    <joint name="wing2_to_propeller4" type="fixed">
+        <origin xyz="-0.22 0.0 0.1" rpy="0.0 0.0 0.0"/>
+        <parent link="wing_4"/>
+        <child link="propeller_4"/>
+    </joint> 
+                                        <!-- F1-->
+    <link name="F1">
+        <visual>
+            <geometry>
+                <cylinder radius="0.02" length="0.1"/>
+            </geometry>
+            <material name="Body_Material"/>
+        </visual>
+    </link>
+    <joint name="propeller1_to_F1" type="continuous">
+        <origin xyz="0.0 0.0 0.2" rpy="0.0 0.0 0.0"/>
+        <parent link="propeller_1"/>
+        <child link="F1"/>
+        <axis xyz="0 0 1"/>
+        </joint>
+                                        <!-- F2-->
+    <link name="F2">
+        <visual>
+            <geometry>
+                <cylinder radius="0.02" length="0.1"/>
+            </geometry>
+            <material name="Body_Material"/>
+        </visual>
+    </link>
+    <joint name="propeller2_to_F2" type="continuous">
+        <origin xyz="0.0 0.0 0.2" rpy="0.0 0.0 0.0"/>
+        <parent link="propeller_2"/>
+        <child link="F2"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+                                        <!-- F3-->
+    <link name="F3">
+        <visual>
+            <geometry>
+                <cylinder radius="0.02" length="0.1"/>
+            </geometry>
+            <material name="Body_Material"/>
+        </visual>
+    </link>
+    <joint name="propeller3_to_F3" type="continuous">
+        <origin xyz="0.0 0.0 0.2" rpy="0.0 0.0 0.0"/>
+        <parent link="propeller_3"/>
+        <child link="F3"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+                                        <!-- F4-->
+    <link name="F4">
+        <visual>
+            <geometry>
+                <cylinder radius="0.02" length="0.1"/>
+            </geometry>
+            <material name="Body_Material"/>
+        </visual>
+    </link>
+    <joint name="propeller4_to_F4" type="continuous">
+        <origin xyz="0.0 0.0 0.2" rpy="0.0 0.0 0.0"/>
+        <parent link="propeller_4"/>
+        <child link="F4"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+                                   <!--fans 1-->
+    <material name="fan_material">
+            <color rgba="1.0 1.0 0.0 0.0"/>
+    </material>
+
+    <link name="fan_1">
+        <visual>
+            <geometry>
+                <box size="0.3 0.02 0.01"/>
+            </geometry>
+            <material name="fan_material"/>
+        </visual>
+        <visual>
+            <geometry>
+                <box size="0.02 0.3 0.01"/>
+            </geometry>
+            <material name="fan_material"/>
+        </visual>
+    </link>
+    <joint name="F1_to_fan1" type="fixed">
+        <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
+        <parent link="F1"/>
+        <child link="fan_1"/>
+    </joint>
+                                   <!--fans 2-->
+    <link name="fan_2">
+        <visual>
+            <geometry>
+                <box size="0.3 0.02 0.01"/>
+            </geometry>
+            <material name="fan_material"/>
+        </visual>
+        <visual>
+            <geometry>
+                <box size="0.02 0.3 0.01"/>
+            </geometry>
+            <material name="fan_material"/>
+        </visual>
+    </link>
+    <joint name="F2_to_fan2" type="fixed">
+        <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
+        <parent link="F2"/>
+        <child link="fan_2"/>
+    </joint>
+                                   <!--fans 3-->
+    <link name="fan_3">
+        <visual>
+            <geometry>
+                <box size="0.3 0.02 0.01"/>
+            </geometry>
+            <material name="fan_material"/>
+        </visual>
+        <visual>
+            <geometry>
+                <box size="0.02 0.3 0.01"/>
+            </geometry>
+            <material name="fan_material"/>
+        </visual>
+    </link>
+    <joint name="F3_to_fan3" type="fixed">
+        <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
+        <parent link="F3"/>
+        <child link="fan_3"/>
+    </joint>
+                                   <!--fans 4-->
+    <link name="fan_4">
+        <visual>
+            <geometry>
+                <box size="0.3 0.02 0.01"/>
+            </geometry>
+            <material name="fan_material"/>
+        </visual>
+        <visual>
+            <geometry>
+                <box size="0.02 0.3 0.01"/>
+            </geometry>
+            <material name="fan_material"/>
+        </visual>
+    </link>
+    <joint name="F4_to_fan4" type="fixed">
+        <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
+        <parent link="F4"/>
+        <child link="fan_4"/>
+    </joint>
+
+</robot>
+                      <!-- at load csv -->
+<!-- time,propeller1_to_F1,propeller2_to_F2,propeller3_to_F3,propeller4_to_F4
+0.0,-3,-3,-3,-3
+0.06,-2.95,-2.95,-2.95,-2.95
+0.12,-2.9,-2.9,-2.9,-2.9
+0.18,-2.85,-2.85,-2.85,-2.85
+0.3,-2.8,-2.8,-2.8,-2.8
+0.36,-2.75,-2.75,-2.75,-2.75
+0.42,-2.7,-2.7,-2.7,-2.7
+0.48,-2.65,-2.65,-2.65,-2.65
+0.54,-2.6,-2.6,-2.6,-2.6
+0.6000000000000001,-2.55,-2.55,-2.55,-2.55
+0.6600000000000001,-2.5,-2.5,-2.5,-2.5
+0.7200000000000002,-2.4,-2.4,-2.4,-2.4
+0.7800000000000002,-2.3,-2.3,-2.3,-2.3
+0.8400000000000003,-2.2,-2.2,-2.2,-2.2
+0.9000000000000004,-2.1,-2.1,-2.1,-2.1
+0.9600000000000004,-2,-2,-2,-2
+1.0200000000000005,-1.9,-1.9,-1.9,-1.9
+1.0800000000000005,-1.8,-1.8,-1.8,-1.8
+1.1400000000000006,-1.7,-1.7,-1.7,-1.7
+1.2000000000000006,-1.6,-1.6,-1.6,-1.6
+1.2600000000000007,-1.5,-1.5,-1.5,-1.5
+1.3200000000000007,-1,-1,-1,-1
+1.3800000000000008,0,0,0,0
+1.4400000000000008,1.5,1.5,1.5,1.5
+1.5000000000000009,2,2,2,2
+1.560000000000001,2.5,2.5,2.5,2.5
+1.620000000000001,3,3,3,3
+1.680000000000001,3.141592653589793,3.141592653589793,3.141592653589793,3.141592653589793
+ -->
