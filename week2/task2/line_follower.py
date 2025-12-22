@@ -1,4 +1,7 @@
 '''
+
+PID values = (7, 0, 367)
+
 Task 2.2 - 
 
 A car is loaded. You have to develop a PID controller for that car such that it runs along the line y = 0.
@@ -76,7 +79,7 @@ cv2.createTrackbar('I', 'controls', 0, 500, callback)       #Creating three diff
 cv2.createTrackbar('D', 'controls', 0, 500, callback)
 
 P=cv2.getTrackbarPos('P', 'controls')/10                #Loading the PID constants from the trackbars
-I=cv2.getTrackbarPos('I', 'controls')/1000
+I=cv2.getTrackbarPos('I', 'controls')/10000
 D=5*cv2.getTrackbarPos('D', 'controls')
 #press escape key to execute
 k=cv2.waitKey(1) & 0xFF                                 #This is needed to keep the track-bars active in real time
